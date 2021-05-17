@@ -30,13 +30,14 @@ SELECT SETVAL(`hibernate_sequence`, 1, 0);
 DROP TABLE IF EXISTS `employees`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `employees` (
-  `id` bigint(20) NOT NULL,
-  `first_name` varchar(255) DEFAULT NULL,
-  `job` int(11) DEFAULT NULL,
-  `last_name` varchar(255) DEFAULT NULL,
-  `salary` double NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `employees`
+(
+    `id`         bigint(20) NOT NULL,
+    `first_name` varchar(255) DEFAULT NULL,
+    `job`        int(11) DEFAULT NULL,
+    `last_name`  varchar(255) DEFAULT NULL,
+    `salary`     double NOT NULL,
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -44,10 +45,12 @@ CREATE TABLE `employees` (
 -- Dumping data for table `employees`
 --
 
-LOCK TABLES `employees` WRITE;
+LOCK
+TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
-UNLOCK TABLES;
+UNLOCK
+TABLES;
 
 --
 -- Table structure for table `users`
@@ -56,12 +59,13 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `id` bigint(20) NOT NULL,
-  `logged` bit(1) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `users`
+(
+    `id`       bigint(20) NOT NULL,
+    `logged`   bit(1)       NOT NULL,
+    `password` varchar(255) NOT NULL,
+    `username` varchar(255) NOT NULL,
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -69,10 +73,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-LOCK TABLES `users` WRITE;
+LOCK
+TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
+UNLOCK
+TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

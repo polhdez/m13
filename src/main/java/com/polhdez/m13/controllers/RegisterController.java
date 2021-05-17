@@ -18,7 +18,7 @@ public class RegisterController {
     private UserRepository userRepository;
 
     @GetMapping("/register")
-    public String getRegister()  {
+    public String getRegister() {
         return "register";
     }
 

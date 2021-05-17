@@ -29,8 +29,8 @@ public class LoginController {
 
     @PostMapping("/login")
     public ModelAndView login(Model model,
-                        @RequestParam String username,
-                        @RequestParam String password) {
+                              @RequestParam String username,
+                              @RequestParam String password) {
         User user = null;
         ModelAndView control = new ModelAndView("control");
         ModelAndView login = new ModelAndView("login");
@@ -38,16 +38,14 @@ public class LoginController {
             user = userRepository.findByUsername(username).get(0);
             user.setLogged(true);
             userRepository.save(user);
-        }
-        catch(Exception e)  {
+        } catch (Exception e) {
             login.addObject("message", "Login Failed! Check your password!");
             return login;
         }
 
-        if(user.getPassword().equals(password)) {
+        if (user.getPassword().equals(password)) {
             return control;
-        }
-        else
+        } else
             return login;
     }
 }

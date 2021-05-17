@@ -6,7 +6,10 @@ import com.polhdez.m13.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/")
@@ -26,7 +29,7 @@ public class ControlController {
 
         Employee employee;
 
-        switch(button) {
+        switch (button) {
             case "create":
                 employee = new Employee(firstName, lastName, Jobs.valueOf(job));
                 employeeRepository.save(employee);
@@ -42,11 +45,10 @@ public class ControlController {
                     employee.setId(employeeId);
                     employee.setSalary(Double.parseDouble(salary));
                     employeeRepository.save(employee);
-                }
-                catch(Exception e) {
+                } catch (Exception e) {
                     model.addAttribute("message", "Something is wrong with your input!");
 
-            }
+                }
         }
 
         model.addAttribute("employees", employeeRepository.findAll());

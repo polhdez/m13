@@ -50,6 +50,7 @@ public class User {
     public Boolean getLogged() {
         return logged;
     }
+
     public void setLogged(boolean logged) {
         this.logged = logged;
     }
