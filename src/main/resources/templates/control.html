@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Control Panel</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="control.css" rel="stylesheet">
+</head>
+<body class="bg-light text-center">
+    <h1>Control Panel</h1>
+    <h3 th:text="${message}"></h3>
+    <br>
+    <div>
+        <h3><label for="employeeForm">Add employee:</label></h3>
+        <br>
+        <form action="/control" id="employeeForm" method="post">
+            <!-- hidden null id param so the controller gets its requires id param even if it doesn't use it -->
+            <input type="hidden" value="null" name="id" />
+            <input type="hidden" value="null" name="salary" />
+
+            <!-- create user form -->
+            <label for="firstName"><b>First name: </b></label>&nbsp;<input type="text" id="firstName" name="firstName"><br><br>
+            <label for="lastName"><b>Last name: </b></label>&nbsp;<input type="text" id="lastName" name="lastName"><br><br>
+            <label for="job"><b>Job: </b></label>
+            <select id="job" name="job">
+                <option value="CLEANER">Cleaner</option>
+                <option value="WORKER">Worker</option>
+                <option value="MANAGER">Manager</option>
+                <option value="BOSS">Boss</option>
+            </select>
+            <button name="button" class="btn btn-primary" value="create" >Create!</button>
+        </form>
+        <br>
+        <table id="employeeTable" name="employeeTable" class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Job</th>
+                <th scope="col">Salary</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Dynamic form creation for each user using thymeleaf -->
+            <tr th:each="employee : ${employees}">
+                <form action="/control" method="post">
+                    <input type="hidden" th:value="${employee.id}" name="id" />
+                    <td th:text="${employee.id}"></td>
+                    <td><input type="text" name="firstName" th:value="${employee.firstName}" /></td>
+                    <td><input type="text" name="lastName" th:value="${employee.lastName}" /></td>
+                    <td>
+                        <label for="job" th:text="${employee.job}" />
+                        <select name="job">
+                            <option th:value="${employee.job}">Select a new job!</option>
+                            <option value="CLEANER">Cleaner</option>
+                            <option value="WORKER">Worker</option>
+                            <option value="MANAGER">Manager</option>
+                            <option value="BOSS">Boss</option>
+                        </select>
+                    </td>
+                    <td><input type="text" name="salary" th:value="${employee.salary}" /></td>
+                    <td><button name="button" class="btn btn-secondary" value="modify">Modify!</button></td>
+                    <td><button name="button" class="btn btn-danger" value="delete">Delete!</button></td>
+                </form>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+</body>
+</html>
