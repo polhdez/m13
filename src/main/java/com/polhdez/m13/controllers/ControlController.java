@@ -50,7 +50,6 @@ public class ControlController {
 
                 }
         }
-
         model.addAttribute("employees", employeeRepository.findAll());
         return "control";
     }

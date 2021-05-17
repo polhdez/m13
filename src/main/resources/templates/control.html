@@ -62,13 +62,13 @@
                 <td><input name="firstName" th:value="${employee.firstName}" type="text"/></td>
                 <td><input name="lastName" th:value="${employee.lastName}" type="text"/></td>
                 <td>
-                    <label for="job" th:text="${employee.job}"/>
                     <select name="job">
-                        <option th:value="${employee.job}">Select a new job!</option>
-                        <option value="CLEANER">Cleaner</option>
-                        <option value="WORKER">Worker</option>
-                        <option value="MANAGER">Manager</option>
-                        <option value="BOSS">Boss</option>
+                        <option th:selected="${#strings.equals(employee.job, 'CLEANER')}" value="CLEANER">Cleaner
+                        </option>
+                        <option th:selected="${#strings.equals(employee.job, 'WORKER')}" value="WORKER">Worker</option>
+                        <option th:selected="${#strings.equals(employee.job, 'MANAGER')}" value="MANAGER">Manager
+                        </option>
+                        <option th:selected="${#strings.equals(employee.job, 'BOSS')}" value="BOSS">Boss</option>
                     </select>
                 </td>
                 <td><input name="salary" th:value="${employee.salary}" type="text"/></td>
